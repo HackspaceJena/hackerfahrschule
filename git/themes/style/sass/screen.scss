@@ -3,6 +3,8 @@
 	font-size:1.75em;
 	background:#fff;
 
+        padding: 0;
+
         header {
             width: 100%;
             min-height: 32px;
@@ -10,13 +12,20 @@
             overflow: hidden;
             position: relative;
             z-index: 4;
+            color: white;
+            padding: 1em;
         }
 	
 	.slide {
 		background:#fff;
-		
+                top: 42px !important;
+
 		h1 {
 			color:#000;
+                        position: static;
+                        top: inherit;
+                        padding-top: 126px !important;
+                        text-align: right;
 		}
 
 		h2 {
