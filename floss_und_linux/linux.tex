@@ -23,14 +23,13 @@ in head/foot}%
 
 \usepackage[utf8]{inputenc}
 \title{Das Freie Betriebsystem Linux}
-\author{Frank Lanitz}
+\author{Frank Lanitz \\ \tiny{frank@frank.uvena.de}}
 \date{\today}
 \begin{document}
 \frame{\titlepage}
 \begin{frame}
 	\tableofcontents{}
 \end{frame}
-
 \begin{frame}
 	\frametitle{Vorstellungsrunde}
 	\begin{block}{Über mich}
@@ -43,8 +42,7 @@ in head/foot}%
 				\end{itemize}
 			\item Jetzt: Administrator bei der Max-Planck-Gesellschaft
 			\item Im Vorstand des Hackspace Jena e.V.
-			\item Aktiv im Umfeld der FLOSS
-			\item Mitarbeit bei Geany seit ca. 7 Jahren u.a. 
+			\item Aktiv im Umfeld der FLOSS (u.a. seit 7 Jahren bei Geany)
 			\begin{itemize}
 				\item Übersetzungen
 				\item Maintainer verschiedener Plugins
@@ -57,11 +55,15 @@ in head/foot}%
 	\frametitle{Das Publikum}
 	\center{\Huge{Wer seit Ihr so?}}
 \end{frame}
-
+\begin{frame}
+	\tableofcontents{}
+\end{frame}
 \section{Freie Software}
 \subsection{Urheberrecht, Copyright \dots}
 \begin{frame}
 	\frametitle{Urheberrecht und Copyright}
+	\textbf{Achtung: Ich bin kein Anwalt \dots}
+	\pause
 	\begin{block}{Allgemein}
 		\begin{itemize}
 			\item Urheberrechte/Copyright wohnt allem Geschaffenen inne
@@ -74,8 +76,9 @@ in head/foot}%
 	\begin{block}{Deutschland}
 		\begin{itemize}
 			\item Urheberrecht kann nicht abgegeben werden
-			\item Software wird analog zu Sprachwerken behandelt (§ 69a Abs 4)
-			\item Nutzer muss eine Lizenz zur Verwendung haben
+			\item Software wird sowohl Binär als auch in Quellcode geschützt; 
+				Darüber hinaus analog zu Sprachwerken (§ 69a Abs 4 UrhG)
+			\item Nutzer muss eine Lizenz zur Verwendung haben (z.B. EULA)
 		\end{itemize}
 	\end{block}
 	\pause
@@ -92,7 +95,8 @@ in head/foot}%
 				Software (free software)
 			\item “Free as in ‘freedom’, not as in ‘free beer’”
 				(Richard Stallman)
-			\item Verschiedene Definitionen 
+			\item Verschiedene Definitionen und Lizenzen (BSD, MIT, 
+				Apache, GPL, LGPL, AGPL, Beerware \dots{})
 			\item Merkmale von Open Source
 			\begin{enumerate}
 				\item Quellcode liegt in lesbarer und verständlicher Form vor
@@ -186,16 +190,16 @@ in head/foot}%
 	\end{block}
 \end{frame}
 
-
-
 \section{Linux}
 
 \begin{frame}
 	\frametitle{Linux -- Nur der Kern}
 	\begin{columns}[c]
 		\column[c]{4cm}
-			\includegraphics[scale=0.6]{media/tux.png}
+			\includegraphics[scale=0.5]{media/tux.png} \newline
+			\huge Linux
 		\column{6cm}
+			\pause
 			\begin{block}{}
 				\begin{itemize}
 					\item Linux (im All.) ist eine Sammlung von Programmen
@@ -219,15 +223,17 @@ in head/foot}%
 				\begin{itemize}
 					\item Vorauswahl von Programmen
 					\item Grundkonfigurationen \& Abstimmung aufeinander
+					\item Bestimmte Zielgruppe
 					\item Meist: Fehlerkorrekturen, Dokumentation, Support
 					\item Beispiele: Ubuntu, Debian, openSuSE/SuSE, RedHat, 
-						Fedora, Slackware, Gentoo \dots{}
+						Fedora, Slackware, Gentoo, Android, grml, Knoppix \dots{}
 				\end{itemize}
 			\item Aber: Komplett selbst zusammenstellen ist auch möglich 
 				(z.B. \textbf{L}inux \textbf{F}rom \textbf{S}cratch 
 				$\rightarrow$ LFS)
 		\end{itemize}
 	\end{block}
+	\pause
 	\begin{block}{Bezugsquellen}
 		\begin{itemize}
 			\item Download aus dem Internet
@@ -238,12 +244,59 @@ in head/foot}%
 \end{frame}
 
 \begin{frame}
-	\frametitle{Die Qual der Wahl - Distributionen wohin das Auge reicht}
+	\frametitle{Die Qual der Wahl - Auswahl wohin das Auge reicht}
 	\begin{block}{}
 		\begin{itemize}
 			\item Für jedes Problem gibt es mindestens zwei Lösungen
+			\pause{}
+			\item Desktopumgebungen (bunte Fenster)
+				\begin{itemize}
+					\item Xfce
+					\item KDF
+					\item Gnome
+					\item Mate
+					\item Unity
+					\item \dots{}
+				\end{itemize}
+			\pause
+			\item Editoren
+				\begin{itemize}
+					\item Vim
+					\item Emacs
+					\item Geany
+					\item mcedit
+					\item nano
+					\item \dots{}
+				\end{itemize}
 		\end{itemize}
 	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Vor- und Nachteile}
+	\begin{block}{Pro}
+		\begin{itemize}
+			\item Große Auswahl
+			\item Individual = Genaue Anpassung an Vorlieben
+			\item Nicht zwingend abhängig von einer Software
+		\end{itemize}
+	\end{block}
+	\pause{}
+	\begin{block}{Contra}
+		\begin{itemize}
+			\item Große Auswahl
+			\item Schwierig das passende Programm zu finden
+			\item Abstimmung zwischen Programmen teils schwierig
+		\end{itemize}
+	\end{block}
+	\pause{}
+	\begin{block}{Lösung}
+		\begin{itemize}
+			\item Distributionen
+			\item Nutzertreffen
+		\end{itemize}
+	\end{block}
+	
 \end{frame}
 
 \begin{frame}
