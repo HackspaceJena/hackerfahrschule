@@ -40,6 +40,7 @@
   <ul>
     <li>Was ist eine Versionsverwaltung?</li>
     <li>Was ist GIT?</li>
+    <li>Was ist ein Branch?</li>
     <li>Wie installiere ich GIT?</li>
     <li>Wie lege ich ein Repository an?</li>
     <li>Wie füge ich eine Datei hinzu?</li>
@@ -57,23 +58,65 @@
 </section>
 
 <section class="slide">
+  <h1> was ist ein Branch?</h1>
+</section>
+
+<section class="slide">
   <h1>Wie installiere ich GIT?</h1>
+  <p><strong>Windows</strong></p>
+  <p>http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git</p>
+  <p><strong>Linux</strong></p>
+  <pre><code>
+    # Debian
+    $ apt-get install git-core
+    # RedHat
+    $ yum install git
+    # gentoo
+    $ emerge git
+  </code></pre>
 </section>
 
 <section class="slide">
   <h1>Wie lege ich ein Repository an?</h1>
+  <pre><code>
+      $ git init
+  </code></pre>
 </section>
 
 <section class="slide">
   <h1>Wie füge ich eine Datei hinzu?</h1>
+  <pre><code>
+      $ git add hausarbeit.tex
+      $ git commit -m "Erster Commit meiner tollen Hausarbeit"
+  </code></pre>
 </section>
 
 <section class="slide">
   <h1>Wie lasse ich mir die Unterschiede anzeigen?</h1>
+  <pre><code>
+      $ git diff hausarbeit.tex
+  </code></pre>
 </section>
 
 <section class="slide">
   <h1>Wie komme ich an eine alte Version ran?</h1>
+  <pre><code>
+      $ git log
+      $ git checkout &lt;versionshash&gt;
+      $ git checkout master
+  </code></pre>
+</section>
+
+<section class="slide">
+  <h1>Noch fragen?</h1>
+  <h2>Was nicht erwähnt wurde</h2>
+  <ul>
+    <li>Noch mehr branching</li>
+    <li>Entfernte Repositories</li>
+    <li>rebase</li>
+    <li>stash</li>
+    
+  </ul>
 </section>
 
 
@@ -110,13 +153,13 @@
 <script src="core/deck.core.js"></script>
 
 <!-- Extension JS files. Add or remove as needed. -->
-<script src="../core/deck.core.js"></script>
-<script src="../extensions/hash/deck.hash.js"></script>
-<script src="../extensions/menu/deck.menu.js"></script>
-<script src="../extensions/goto/deck.goto.js"></script>
-<script src="../extensions/status/deck.status.js"></script>
-<script src="../extensions/navigation/deck.navigation.js"></script>
-<script src="../extensions/scale/deck.scale.js"></script>
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
