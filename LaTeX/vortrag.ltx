@@ -1,0 +1,251 @@
+% Für die Nutzungsbedingungen siehe die Folie am Ende des Vortrags.
+% © Jörg Sommer 2012
+%
+% Powerdot creates the .bm file and it's important to watch on it.
+% rubber: clean $base.bm $base.vrb
+% rubber: watch $base.bm $base.toc
+
+\PassOptionsToPackage{draft=false,breaklinks}{hyperref}
+
+\RequirePackage[ngerman]{babel}
+\documentclass[mode=present,style=fyma,ngerman]{powerdot}
+  % mode=present: generate a presentation
+  % mode=handout: generate a handout (no visual effect)
+  % mode=print: generate a document for printing with the slides
+  % nopagebreak: allow more than two slides per page on handout
+  % display=slidesnotes: include slides + notes in output
+  % display=slides: output only slides
+  % display=notes: output only notes
+  % clock: insert a clock on slides
+  % style: the layout style
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{fixltx2e}
+\usepackage[draft=false,babel]{microtype}
+%\usepackage{enumitem}
+\usepackage[babel,german=guillemets]{csquotes}
+\usepackage{wasysym}
+\usepackage{fancyvrb}
+\usepackage{enumitem}
+
+\pdsetup{lf={-- Erstellt mit Jörg's\LaTeX{}mode -- Schriftsatz und Effekte
+  von powerdot und \LaTeX{} --},
+  list={topsep=0pt,partopsep=0pt},
+  itemize={leftmargin=10pt},           % default 25pt
+  enumerate={leftmargin=15pt}}         % default 22pt
+
+\renewcommand*{\emph}[1]{\textcolor[rgb]{.77,0,.55}{#1}}
+
+\makeatletter
+\newcommand*{\pd@contslide@title}{}
+\newcounter{pd@continue}
+\pddefinetemplate[slide]{contslide}{}{%
+  \@tempswafalse%
+  \ifnum\value{pd@overlay}=1\relax\@tempswatrue\fi%
+  \ifnum\pd@method=2\relax\@tempswatrue\fi%
+  \if@tempswa%
+    \ifx\pd@contslide@title\pd@t@tle%
+      \stepcounter{pd@continue}%
+      \setkeys[pd]{slide}{toc=,bm=}%
+    \else%
+      \setcounter{pd@continue}\@ne%
+      \global\let\pd@contslide@title\pd@t@tle%
+      \ifx\pd@@toc\@undefined%
+        \let\pd@@toc\pd@contslide@title%
+      \fi%
+      \ifx\pd@@bm\@undefined%
+        \let\pd@@bm\pd@contslide@title%
+      \fi%
+    \fi%
+    \edef\pd@t@tle{\noexpand\pd@contslide@title\noexpand\space%
+      (\arabic{pd@continue})}%
+  \fi%
+}
+\makeatother
+
+\begin{document}
+
+\title{Hackerfahrschule -- Einführung in \LaTeX{}}
+\author{Jörg Sommer
+  \href{mailto:joerg@alea.gnuu.de}{\nolinkurl{<joerg@alea.gnuu.de>}}}
+\date{2012-10-10}
+
+\maketitle
+
+\section{Allgemeines}
+
+\begin{slide}{Was ist \LaTeX{}}
+  \begin{itemize}
+   \item in 1980ern entstanden im naturwissenschaftlichen Bereich für
+    qualitativ hochwertigen Buchsatz
+   \item seither rege Weiterentwicklung und Erweiterung für andere Bereiche
+    wie Jura, Sprachwissenschaften, Briefe, Noten, Präsentationen\pause
+   \item Unterschied liegt im \onslide*{1}{Detail}\onslide*{2}{\emph{Detail}}:
+    Texte mit Schreibmaschine nicht sonderlich leserfreundlich
+   \item Unterschied liegt in der
+    \onslide*{1}{Mächtigkeit}\onslide*{2}{\emph{Mächtigkeit}}: Fußnoten mit
+    Ersetzungen bei Wiederholungen, Verzeichnisse wie Bildv., Index, Quellenv.
+  \end{itemize}
+\end{slide}
+
+\begin{slide}[toc={Das Besondere}]{Was ist das Besondere?}
+  \begin{itemize}
+   \item zweistufiger Arbeitsprozess: Datei mit der \enquote{Beschreibung} des
+    Dokuments erstellen + Dokument mit \LaTeX{} generieren $\rightarrow$
+    Vorteil: Dokument immer erreichbar auch wenn \LaTeX{} streikt
+   \item Beschreibung ist mehr eine Programmierung $\rightarrow$ eröffnet
+    viele Möglichkeiten
+  \end{itemize}
+\end{slide}
+
+\begin{slide}{Quellen}
+  $\rightarrow$ Download des Installers oder der DVD
+
+  \begin{center}
+    \url{http://tug.org/texlive/}
+  \end{center}
+
+  übliche Installation
+\end{slide}
+
+\begin{slide}{Warnung}
+  \begin{center}
+    \Large
+    \LaTeX{} nicht zum \emph{ersten} Mal bei\\
+    einer großen Arbeit einsetzen.
+  \end{center}
+
+  \vspace{1cm}
+  Rechtzeitig beginnen! Einarbeitung nötig.
+
+  \vspace{1cm}
+  großes Dokument lässt sich nicht in 2 Stunden in \LaTeX{} konvertieren
+\end{slide}
+
+\section{Einstieg}
+
+\begin{slide}[method=direct,toc={Päampel+Dok.}]{Präampel + Dokument}
+  \begin{Verbatim}[gobble=2,commandchars=+\[\]]
+  \documentclass{scrartcl}    +emph[+ensuremath[+leftarrow] Dokumententyp]
+
+  +emph[<Kopfteil für globale Einstellungen>]
+
+  \begin{document}
+
+    +emph[<Inhalt des eigentlichen Dokuments>]
+
+  \end{document}
+  \end{Verbatim}
+\end{slide}
+
+\begin{slide}[method=direct,toc={Minibsp.}]{Minimaldokument}
+  \begin{Verbatim}[gobble=2,commandchars=+\[\]]
+  \documentclass{scrartcl}
+  \begin{document}
+    Es liegt in der Natur des Menschen,
+    vernünftig zu denken und unlogisch zu handeln!
+    Das Gesagte ist nicht das Gemeinte und
+    das Gehörte nicht das Verstandene!
+  \end{document}
+  \end{Verbatim}
+\end{slide}
+
+\begin{slide}[method=direct,toc={Ausgabe}]{Ausgabe erstellen}
+  Kommandozeile: \verb+pdflatex minibsp.ltx+
+
+  \vspace{1cm}
+
+  Oder mit \TeX{}Maker \ldots{}
+\end{slide}
+
+\section{Grundlagen}
+
+\begin{slide}[toc={Bef.+Umg.}]{Befehle und Umgebungen}
+  Befehle:
+  \begin{itemize}
+   \item beginnen mit einem Backslash \textbackslash{}NAME
+   \item haben 0 oder mehrere Pflichtargumente in geschwungenen Klammern \{\}
+   \item können 0 oder mehrere optionale Argumente in eckigen Klammern haben [~]
+   \item Beispiele: \textbackslash{}LaTeX, \textbackslash{}emph\{text\}
+  \end{itemize}
+  \pause
+
+  \vspace{1cm}
+  Umgebungen:
+  \begin{itemize}
+   \item \textbackslash{}begin\{NAME\}\ldots{}\textbackslash{}end\{NAME\}
+   \item Argumente analog zu Befehlen
+   \item Beispiele:
+    \textbackslash{}begin\{itemize\}\ldots{}\textbackslash{}end\{itemize\},
+    \textbackslash{}begin\{minipage\}\{2cm\}\ldots{}\textbackslash{}end\{minipage\}
+  \end{itemize}
+\end{slide}
+
+\begin{slide}{Kommentare}
+  Man kann Teile des Quelltexts deaktivieren, indem man ein Prozentzeichen \%
+  voranstellt. Bis zum Ende der Zeile wird alles ignoriert.
+
+  \vspace{1cm}
+  Praktisch für Erinnerungen oder Teile die nicht gleich gelöscht werden sollen
+\end{slide}
+
+\begin{slide}{Strukturierung}
+  \begin{itemize}
+   \item Leerzeilen im Quelltext beginnen neue Absätze
+   \item \textbackslash{}section\{NAME\}, \textbackslash{}subsection\{NAME\}, \ldots{}
+  \end{itemize}
+\end{slide}
+
+\section{Abspann}
+
+\begin{slide}{Quiz}
+  \begin{enumerate}
+   \item Die zwei grundlegenden Elemente von \LaTeX{} sind?\pause
+
+    \emph{$\rightarrow$ Befehle und Umgebungen}\pause
+
+   \item Der Inhalt des Dokuments befindet sich in der Umgebung
+    \textit{content}. Richtig/""Falsch?\pause
+
+    \emph{Falsch in \texttt{\textbackslash{}begin\{document\}\ldots{}
+    \textbackslash{}end\{document\}}}\pause
+
+   \item Der Befehl zum Einbinden von Grafiken lautet?
+    \begin{enumerate}
+     \item \textbackslash{}bild\{\}
+     \item \textbackslash{}includegraphics\{\}
+      \onslide{6-}{\qquad\emph{$\longleftarrow$}}
+     \item \textbackslash{}paintpicture\{\}
+    \end{enumerate}\pause
+    % zweite pause für die Markierung in onslide
+    \pause
+
+   \item Mit \LaTeX{} kann man leichter große und gut aussehende Dokumente
+    erstellen?\pause \qquad\emph{selbst herausfinden}
+  \end{enumerate}
+\end{slide}
+
+\begin{slide}[toc=Ende]{}
+  \centering
+  \Huge
+  \vfill
+  Vielen Dank für Ihre Aufmerksamkeit und\\
+  viel Spaß beim \TeX{}en
+  \vfill\vfill
+  \null
+\end{slide}
+
+\begin{slide}[toc=Nutzungsbedingung.]{Nutzungsbedingungen}
+  Dieses Dokument sowie die \LaTeX{}"~Quellen dafür und alle zugehörigen
+  Dateien dürfen in Teilen oder als Ganzes unter Angabe der Quelle, des Names
+  und der E"~Mailadresse des Autors kopiert, verändert und weitergegeben
+  werden.
+
+  \bigskip
+  \copyright{} 2012, Jörg Sommer
+  \href{mailto:joerg@alea.gnuu.de}{\nolinkurl{<joerg@alea.gnuu.de>}}
+\end{slide}
+
+\end{document}
